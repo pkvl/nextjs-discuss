@@ -40,4 +40,5 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - Leave comments in Posts 
 - Search Posts
 
+## Demo
 ![Demo image](https://github.com/pkvl/nextjs-discuss/blob/main/assets/demo.png?raw=true)
