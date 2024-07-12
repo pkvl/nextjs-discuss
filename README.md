@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a simple discuss-style application built to familiarize myself with [Next.js](https://nextjs.org/).
+
+## Technologies used
+- [Next.js](https://nextjs.org/) - app
+- [NextAuth.js](https://next-auth.js.org/) - for auth purposes
+- [Prisma](https://www.prisma.io/) - ORM
+- [SQLite](https://www.sqlite.org/) - SQL file-based Database
+- [Tailwind](https://tailwindcss.com/) - for styling
+- [Zod](https://zod.dev/) - for input validation
 
 ## Getting Started
 
-First, run the development server:
+To complete the setup you need to create a [GitHub OAuth application](https://github.com/settings/applications/new). Copy `.env` file and rename the copy to the `.env.local`. Set up the application variables:
+  - `DATABASE_URL="file:./dev.db"` - path to your SQLite db file.
+  - `AUTH_SECRET` - should be your secret wording (for the client)
+  - `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET` should be copied from your freshly-created GitHub OAuth application.
+
+Generate database via Prisma (if you want to have a database in the repository: delete `prisma/dev.db` from `.gitignore`):
+```bash
+npx prisma init --datasource-provider sqlite && npx prisma generate
+```
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+
+Or start the production-ready application:
+```bash
+npm run start
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
+- Sign In/Sign Up process via GitHub account
+- Create Topics
+- Create Posts in Topics
+- Leave comments in Posts 
+- Search Posts
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![Demo image]((https://github.com/pkvl/nextjs-disuss/blob/[main]/assets/demo.png?raw=true)
